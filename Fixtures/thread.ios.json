@@ -1,0 +1,37 @@
+{
+  "category": "bug",
+  "body": "The cart total is wrong when a promo code is applied.",
+  "rating": null,
+  "pageContext": {
+    "platform": "ios",
+    "route": "cart",
+    "title": "Cart",
+    "bundleId": "com.acme.shop",
+    "appVersion": "2.8.1",
+    "buildNumber": "4213",
+    "osVersion": "18.2",
+    "deviceModel": "iPhone 16 Pro",
+    "locale": "en-GB",
+    "timezone": "Europe/London",
+    "viewport": { "width": 393, "height": 852 },
+    "scale": 3,
+    "orientation": "portrait",
+    "network": "wifi"
+  },
+  "visitor": {
+    "id": "u_8412",
+    "email": "ada@example.com",
+    "name": "Ada Lovelace",
+    "userHash": "0c933218fd1eed34a4e34009561100386b7ba972c3bf1ec193d6b582a012d7b6"
+  },
+  "metadata": { "plan": "pro", "seats": 12, "trial": false },
+  "attachments": [
+    {
+      "kind": "screenshot",
+      "storageKey": "screenshots/2026/09/15/9f1c2f7a.jpeg",
+      "contentType": "image/jpeg",
+      "sizeBytes": 184320
+    }
+  ],
+  "appVersion": "2.8.1"
+}

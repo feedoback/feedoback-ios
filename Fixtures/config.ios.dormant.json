@@ -1,0 +1,17 @@
+{
+  "projectName": "Acme Shop",
+  "enabled": false,
+  "reason": "visitor-not-identified",
+  "appearance": {
+    "color": "#0f6e56",
+    "size": "medium",
+    "position": "bottom-right",
+    "rating": true,
+    "welcome": "Have feedback? We're listening.",
+    "label": "Feedback",
+    "icon": "message",
+    "actions": { "point": false, "record": false, "feedback": true },
+    "bubble": true,
+    "bubbleSeconds": 0
+  }
+}

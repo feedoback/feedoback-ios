@@ -1,0 +1,18 @@
+{
+  "category": "feedback",
+  "body": "The pricing table is hard to read on a narrow window.",
+  "rating": 3,
+  "pageContext": {
+    "url": "https://acme.example.com/pricing?plan=pro",
+    "title": "Pricing — Acme",
+    "referrer": "https://www.google.com/",
+    "viewport": { "width": 1280, "height": 900 },
+    "screen": { "width": 1920, "height": 1080 },
+    "devicePixelRatio": 2,
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36",
+    "language": "en-GB",
+    "timezone": "Europe/London"
+  },
+  "visitor": { "email": "grace@example.com" },
+  "appVersion": "2026.09.15"
+}

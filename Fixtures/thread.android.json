@@ -1,0 +1,23 @@
+{
+  "category": "feedback",
+  "body": "Love the new checkout, but the keyboard covers the coupon field.",
+  "rating": 4,
+  "pageContext": {
+    "platform": "android",
+    "route": "checkout/payment",
+    "title": "Payment",
+    "bundleId": "com.acme.shop",
+    "appVersion": "2.8.1",
+    "buildNumber": "4213",
+    "osVersion": "15",
+    "deviceModel": "Pixel 9",
+    "locale": "sv-SE",
+    "timezone": "Europe/Stockholm",
+    "viewport": { "width": 412, "height": 915 },
+    "scale": 2.625,
+    "orientation": "portrait",
+    "network": "cellular"
+  },
+  "visitor": { "id": "u_112", "name": "Grace" },
+  "appVersion": "2.8.1"
+}

@@ -1,0 +1,22 @@
+{
+  "description": "Headers a native SDK sends. A browser sends none of them and is gated on its Origin instead.",
+  "headers": {
+    "X-Feedoback-Platform": {
+      "example": "ios",
+      "values": ["ios", "android"],
+      "purpose": "Which gate the request goes through. Without it the request is treated as a browser's."
+    },
+    "X-Feedoback-App": {
+      "example": "com.acme.shop",
+      "purpose": "The bundle id or package name, read from the OS. Declared, never verified: a gate the project's owner controls, not a proof."
+    },
+    "X-Feedoback-Install": {
+      "example": "9f1c2f7a-6f63-4f2e-9a2e-1b0c3d4e5f60",
+      "purpose": "A random id the SDK stores on first launch. A rate-limit bucket only, so one device in a loop does not cost a whole carrier's worth of visitors. Not an identity and not a secret."
+    },
+    "X-Feedoback-SDK": {
+      "example": "ios/0.1.0",
+      "purpose": "Which SDK and version. Diagnostic only."
+    }
+  }
+}
