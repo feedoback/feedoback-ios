@@ -14,6 +14,11 @@ dashboard, so it changes without an app release.
 
 Requires iOS 15. No dependencies, and there will not be any.
 
+The package builds on macOS as well, which is what lets its tests run without a
+simulator — but the SDK is iOS, behind `canImport(UIKit)`. A Mac target resolves
+it and finds the wire types alone, no `Feedoback.shared`. That `shared` is
+main-actor, as the places you call it from already are.
+
 ## Install
 
 Swift Package Manager, from Xcode's **Add Package Dependencies**, or:
