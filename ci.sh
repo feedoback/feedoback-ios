@@ -7,10 +7,6 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-# The simulator to test on. Pinned by the workflow rather than discovered, so a
-# green run means the same thing twice.
-DESTINATION=${FEEDOBACK_DESTINATION:-platform=iOS Simulator,OS=latest,name=iPhone 17 Pro}
-
 step() { printf '\n\033[1m==> %s\033[0m\n' "$1"; }
 
 step "Version"
@@ -36,6 +32,7 @@ step "Tests on the host"
 swift test
 
 step "Tests on a simulator"
+DESTINATION=$(./simulator.sh)
 # Not a repeat: redaction and the theme are behind canImport(UIKit), so on the
 # host they are compiled out. This is the only run that executes them.
 xcodebuild test \
