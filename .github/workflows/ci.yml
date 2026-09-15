@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    # Pinned, not macos-latest: the image decides which Xcode and which
+    # simulator runtimes exist, so a moving image is a moving test result.
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_26.3.app
+
+      - name: Record the toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      # Everything this package has to pass. The same file runs in the
+      # repository this one is published from, so the two cannot drift.
+      - run: ./ci.sh
