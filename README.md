@@ -146,11 +146,22 @@ not break on ours.
 ## Tests
 
 ```bash
+./ci.sh                             # everything continuous integration runs
+```
+
+Or one at a time:
+
+```bash
 swift test                          # the wire, transport, store and session — no simulator
 xcodebuild test -scheme Feedoback \
-  -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
+  -destination 'platform=iOS Simulator,OS=latest,name=iPhone 17 Pro'
 ./size.sh                           # what it costs a customer's binary
 ```
+
+The second is not a repeat of the first. Redaction and the theme are behind
+`canImport(UIKit)`, so on a Mac they are compiled out: 65 tests run there and
+75 on a simulator, and the ten in the gap include what a screenshot paints
+over. Only the simulator run is the whole suite.
 
 The wire tests read the fixtures the server reads too. A field added on one
 side and not the other fails a build rather than a customer.
