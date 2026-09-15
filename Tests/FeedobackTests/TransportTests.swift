@@ -242,14 +242,16 @@ final class TransportTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private func assertThrows(
+    /// Generic over what the work returns, so a caller testing a throwing
+    /// call that also has a result does not have to discard it at every site.
+    private func assertThrows<Result>(
         _ expected: FeedobackTransportError,
         file: StaticString = #filePath,
         line: UInt = #line,
-        _ work: () async throws -> Void
+        _ work: () async throws -> Result
     ) async {
         do {
-            try await work()
+            _ = try await work()
             XCTFail("expected \(expected)", file: file, line: line)
         } catch let error as FeedobackTransportError {
             XCTAssertEqual(error, expected, file: file, line: line)

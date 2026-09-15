@@ -203,12 +203,12 @@ final class SessionTests: XCTestCase {
     /// feedback written on the pro plan does not arrive marked free because
     /// they downgraded while it sat in a tunnel.
     func testAQueuedThreadArrivesWithTheContextItWasWrittenUnder() async throws {
-        var plan = "pro"
+        let plan = Mutable("pro")
         StubProtocol.handler = { _ in throw URLError(.notConnectedToInternet) }
-        let (session, _) = makeSession(metadata: { ["plan": .string(plan)] })
+        let (session, _) = makeSession(metadata: { ["plan": .string(plan.value)] })
         _ = await session.send(FeedobackDraft(body: "Written on pro"))
 
-        plan = "free"
+        plan.value = "free"
         answer(201, #"{"threadId":"t_1"}"#)
         let sent = await session.flushQueue()
 

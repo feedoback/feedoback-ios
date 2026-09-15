@@ -13,17 +13,17 @@ final class MemoryDefaults: FeedobackDefaults {
 
 final class StoreTests: XCTestCase {
     private var defaults: MemoryDefaults!
-    private var clock: Date!
+    private var clock: Mutable<Date>!
 
     override func setUp() {
         super.setUp()
         defaults = MemoryDefaults()
-        clock = Date(timeIntervalSince1970: 1_800_000_000)
+        clock = Mutable(Date(timeIntervalSince1970: 1_800_000_000))
     }
 
     private func store() -> FeedobackStore {
-        let read = { [weak self] in self?.clock ?? Date() }
-        return FeedobackStore(defaults: defaults, now: read)
+        let clock = self.clock!
+        return FeedobackStore(defaults: defaults, now: { clock.value })
     }
 
     private func thread(_ body: String, visitor: FeedobackVisitor? = nil) -> FeedobackThreadRequest {
@@ -129,7 +129,7 @@ final class StoreTests: XCTestCase {
         let store = self.store()
         await store.enqueue(thread("Ancient"))
 
-        clock = clock.addingTimeInterval(FeedobackStore.maxQueueAge + 60)
+        clock.value = clock.value.addingTimeInterval(FeedobackStore.maxQueueAge + 60)
         let queued = await store.queued()
 
         XCTAssertTrue(queued.isEmpty)
